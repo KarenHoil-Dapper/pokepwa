@@ -16,3 +16,11 @@ registerSW({
     console.log('La aplicación está lista para usarse sin conexión.')
   }
 })
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.jsx')
+      .then(reg => console.log('ServiceWorker registrado.', reg))
+      .catch(err => console.log('ServiceWorker fallo:', err));
+  });
+}
